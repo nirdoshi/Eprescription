@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "862189540682",
+    "firebase_url": "https://voice-prescription-b05e4.firebaseio.com",
+    "project_id": "voice-prescription-b05e4",
+    "storage_bucket": "voice-prescription-b05e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862189540682:android:a66521d8f34193d3e79db3",
+        "android_client_info": {
+          "package_name": "com.example.voiceprescription"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862189540682-0dkbck8dn9i9prj5dcrdd0791jud94je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtPZuX_RGR2TI5hpktNCOMvxVGuo9CGTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862189540682-0dkbck8dn9i9prj5dcrdd0791jud94je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
