@@ -1,9 +1,8 @@
-package com.example.voiceprescription;
+package com.napps.voiceprescription;
 
 import android.app.Application;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class publicarray extends Application{
 

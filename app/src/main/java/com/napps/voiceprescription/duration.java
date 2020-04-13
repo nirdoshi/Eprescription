@@ -1,4 +1,4 @@
-package com.example.voiceprescription;
+package com.napps.voiceprescription;
 
 import androidx.appcompat.app.AppCompatActivity;
 
