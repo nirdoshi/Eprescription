@@ -861,12 +861,12 @@ public class Editinfo extends AppCompatActivity {
 
     public void btn_sendsms_OnClick(View v) {
 
-        if(ContextCompat.checkSelfPermission(Editinfo.this, Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED){
+       /* if(ContextCompat.checkSelfPermission(Editinfo.this, Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED){
 
             ActivityCompat.requestPermissions(Editinfo.this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
 
         }else {
-
+    */
 
             final String[] message = new String[100];
             if (et_Emeds2.getText().toString().isEmpty() && et_Emeds3.getText().toString().isEmpty()
@@ -942,13 +942,15 @@ public class Editinfo extends AppCompatActivity {
             //time[0] =spinner_T1.getSelectedItem().toString();
             //String ftime="Time to take medicine 1 is :-"+time[0];
             //String ftime2=complete+"\n"+message+"\n"+ftime;
-            ArrayList<String> messages = sms.divideMessage(fcomplete);
-            sms.sendMultipartTextMessage(phone, null, messages, null, null);
-
+            //ArrayList<String> messages = sms.divideMessage(fcomplete);
+            //sms.sendMultipartTextMessage(phone, null, messages, null, null);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+        intent.putExtra("sms_body", fcomplete);
+        startActivity(intent);
 
         }
 
-    }
+
 
 
     public void onClickWhatsApp(View view) {

@@ -435,12 +435,12 @@ public class medstime extends AppCompatActivity {
       //  Patientinfo patientinfo=new Patientinfo();
        // String message;
 
-        if(ContextCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
+       /* if(ContextCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
 
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
 
         }else {
-
+         */
 
         /*if(ContextCompat.checkSelfPermission(medstime.this,Manifest.permission.SEND_SMS)==PackageManager.PERMISSION_GRANTED){
             Toast.makeText(this, "permission granted", Toast.LENGTH_SHORT).show();
@@ -465,13 +465,20 @@ public class medstime extends AppCompatActivity {
             if (spinner_T2.getSelectedItem().toString().equals("0") && spinner_T3.getSelectedItem().toString().equals("0")
                     && spinner_T4.getSelectedItem().toString().equals("0") && spinner_T5.getSelectedItem().toString().equals("0")
             ) {
+
                 SmsManager sms = SmsManager.getDefault();
                 time[0] = spinner_T1.getSelectedItem().toString();
                 String ftime = "Time to take medicine 1 is :-" + time[0];
                 String ftime2 = complete + "\n" + message + "\n" + ftime;
-                ArrayList<String> messages = sms.divideMessage(ftime2);
+               /* ArrayList<String> messages = sms.divideMessage(ftime2);
                 sms.sendMultipartTextMessage(phone, null, messages, null, null);
-             /* for (String msg : messages) {
+                */
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                intent.putExtra("sms_body", ftime2);
+                startActivity(intent);
+
+
+                /* for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
@@ -486,9 +493,15 @@ public class medstime extends AppCompatActivity {
 
                 String ftime2 = complete + "\n" + message + "\n" + time[0];
                 // List<String> messages = sms.divideMessage(ftime2);
-                ArrayList<String> messages = sms.divideMessage(ftime2);
+               /* ArrayList<String> messages = sms.divideMessage(ftime2);
                 sms.sendMultipartTextMessage(phone, null, messages, null, null);
-           /* for (String msg : messages) {
+                */
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                intent.putExtra("sms_body", ftime2);
+                startActivity(intent);
+
+
+                /* for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
@@ -499,9 +512,14 @@ public class medstime extends AppCompatActivity {
                         + " \nTime to make medicine 3 : " + spinner_T3.getSelectedItem().toString()
                 ;
                 String ftime2 = complete + "\n" + message + "\n" + time[0];
-                ArrayList<String> messages = sms.divideMessage(ftime2);
-                sms.sendMultipartTextMessage(phone, null, messages, null, null);
-            /*for (String msg : messages) {
+                //ArrayList<String> messages = sms.divideMessage(ftime2);
+                //sms.sendMultipartTextMessage(phone, null, messages, null, null);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                intent.putExtra("sms_body", ftime2);
+                startActivity(intent);
+
+                /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
@@ -512,9 +530,14 @@ public class medstime extends AppCompatActivity {
                         + " \nTime to make medicine 3 : " + spinner_T3.getSelectedItem().toString() + "\n Time to take medicine 4 : " + spinner_T4.getSelectedItem().toString()
                 ;
                 String ftime2 = complete + "\n" + message + "\n" + time[0];
-                ArrayList<String> messages = sms.divideMessage(ftime2);
-                sms.sendMultipartTextMessage(phone, null, messages, null, null);
-            /*for (String msg : messages) {
+                //ArrayList<String> messages = sms.divideMessage(ftime2);
+                //sms.sendMultipartTextMessage(phone, null, messages, null, null);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                intent.putExtra("sms_body", ftime2);
+                startActivity(intent);
+
+                /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
@@ -526,9 +549,14 @@ public class medstime extends AppCompatActivity {
                         + "\n Time to make medcine 5 : " + spinner_T5.getSelectedItem().toString()
                 ;
                 String ftime2 = complete + "\n" + message + "\n" + time[0];
-                ArrayList<String> messages = sms.divideMessage(ftime2);
-                sms.sendMultipartTextMessage(phone, null, messages, null, null);
-            /*for (String msg : messages) {
+               // ArrayList<String> messages = sms.divideMessage(ftime2);
+                //sms.sendMultipartTextMessage(phone, null, messages, null, null);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + phone));
+                intent.putExtra("sms_body", ftime2);
+                startActivity(intent);
+
+                /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
@@ -550,7 +578,7 @@ public class medstime extends AppCompatActivity {
 
 
         }*/
-    }
+
 
 
     public void onClickWhatsApp(View view) {
