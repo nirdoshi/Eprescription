@@ -434,91 +434,106 @@ public class medstime extends AppCompatActivity {
     public void btn_sendsms_OnClick(View v){
       //  Patientinfo patientinfo=new Patientinfo();
        // String message;
-        SharedPreferences sharedPreferences= getSharedPreferences("my_key",MODE_PRIVATE);
-        String name=sharedPreferences.getString("name","");
-        String phone=sharedPreferences.getString("phone","");
-        String age=sharedPreferences.getString("age","");
-        String symptoms=sharedPreferences.getString("symptoms","");
-        String diagnosis=sharedPreferences.getString("diagnosis","");
-        String message=sharedPreferences.getString("message","");
 
-        String complete="your name is : "+name+"\n your age is : "+age+"\n your symptoms are : "+symptoms+
-                "\n diagnosis : "+diagnosis;
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
 
-        final String[] time = new String[10];
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
 
-        if(spinner_T2.getSelectedItem().toString().equals("0") && spinner_T3.getSelectedItem().toString().equals("0")
-        &&spinner_T4.getSelectedItem().toString().equals("0") && spinner_T5.getSelectedItem().toString().equals("0")
-        ){
-            SmsManager sms=SmsManager.getDefault();
-                    time[0] =spinner_T1.getSelectedItem().toString();
-                    String ftime="Time to take medicine 1 is :-"+time[0];
-                    String ftime2=complete+"\n"+message+"\n"+ftime;
-            ArrayList<String> messages = sms.divideMessage(ftime2);
-            sms.sendMultipartTextMessage(phone,null,messages,null,null);
-            /*  for (String msg : messages) {
+        }else {
+
+
+        /*if(ContextCompat.checkSelfPermission(medstime.this,Manifest.permission.SEND_SMS)==PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(this, "permission granted", Toast.LENGTH_SHORT).show();
+        }else {
+            permission();
+        }*/
+
+
+            SharedPreferences sharedPreferences = getSharedPreferences("my_key", MODE_PRIVATE);
+            String name = sharedPreferences.getString("name", "");
+            String phone = sharedPreferences.getString("phone", "");
+            String age = sharedPreferences.getString("age", "");
+            String symptoms = sharedPreferences.getString("symptoms", "");
+            String diagnosis = sharedPreferences.getString("diagnosis", "");
+            String message = sharedPreferences.getString("message", "");
+
+            String complete = "your name is : " + name + "\n your age is : " + age + "\n your symptoms are : " + symptoms +
+                    "\n diagnosis : " + diagnosis;
+
+            final String[] time = new String[10];
+
+            if (spinner_T2.getSelectedItem().toString().equals("0") && spinner_T3.getSelectedItem().toString().equals("0")
+                    && spinner_T4.getSelectedItem().toString().equals("0") && spinner_T5.getSelectedItem().toString().equals("0")
+            ) {
+                SmsManager sms = SmsManager.getDefault();
+                time[0] = spinner_T1.getSelectedItem().toString();
+                String ftime = "Time to take medicine 1 is :-" + time[0];
+                String ftime2 = complete + "\n" + message + "\n" + ftime;
+                ArrayList<String> messages = sms.divideMessage(ftime2);
+                sms.sendMultipartTextMessage(phone, null, messages, null, null);
+             /* for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
 
-            //time="Time to take medcine 1 : "+spinner_T1.getSelectedItem().toString();
+                //time="Time to take medcine 1 : "+spinner_T1.getSelectedItem().toString();
 
-        }else if(spinner_T3.getSelectedItem().toString().equals("0") && spinner_T4.getSelectedItem().toString().equals("0")
-        && spinner_T5.getSelectedItem().toString().equals("0")){
-            SmsManager sms=SmsManager.getDefault();
-            time[0]="Time to take medicine 1 : "+spinner_T1.getSelectedItem().toString()+"\n Time to take medicine 2 : "
-                    +spinner_T2.getSelectedItem().toString();
+            } else if (spinner_T3.getSelectedItem().toString().equals("0") && spinner_T4.getSelectedItem().toString().equals("0")
+                    && spinner_T5.getSelectedItem().toString().equals("0")) {
+                SmsManager sms = SmsManager.getDefault();
+                time[0] = "Time to take medicine 1 : " + spinner_T1.getSelectedItem().toString() + "\n Time to take medicine 2 : "
+                        + spinner_T2.getSelectedItem().toString();
 
-            String ftime2=complete+"\n"+message+"\n"+time[0];
-           // List<String> messages = sms.divideMessage(ftime2);
-            ArrayList<String> messages = sms.divideMessage(ftime2);
-            sms.sendMultipartTextMessage(phone,null,messages,null,null);
+                String ftime2 = complete + "\n" + message + "\n" + time[0];
+                // List<String> messages = sms.divideMessage(ftime2);
+                ArrayList<String> messages = sms.divideMessage(ftime2);
+                sms.sendMultipartTextMessage(phone, null, messages, null, null);
            /* for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
 
-        }else if(spinner_T4.getSelectedItem().toString().equals("0") && spinner_T5.getSelectedItem().toString().equals("0")){
-            SmsManager sms=SmsManager.getDefault();
-            time[0]="Time to take medicine 1 : "+spinner_T1.getSelectedItem().toString()+"\n Time to take medicine 2 : "+spinner_T2.getSelectedItem().toString()
-            +" \nTime to make medicine 3 : "+spinner_T3.getSelectedItem().toString()
-            ;
-            String ftime2=complete+"\n"+message+"\n"+time[0];
-            ArrayList<String> messages = sms.divideMessage(ftime2);
-            sms.sendMultipartTextMessage(phone,null,messages,null,null);
+            } else if (spinner_T4.getSelectedItem().toString().equals("0") && spinner_T5.getSelectedItem().toString().equals("0")) {
+                SmsManager sms = SmsManager.getDefault();
+                time[0] = "Time to take medicine 1 : " + spinner_T1.getSelectedItem().toString() + "\n Time to take medicine 2 : " + spinner_T2.getSelectedItem().toString()
+                        + " \nTime to make medicine 3 : " + spinner_T3.getSelectedItem().toString()
+                ;
+                String ftime2 = complete + "\n" + message + "\n" + time[0];
+                ArrayList<String> messages = sms.divideMessage(ftime2);
+                sms.sendMultipartTextMessage(phone, null, messages, null, null);
             /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
 
-        }else if(spinner_T5.getSelectedItem().toString().equals("0")){
-            SmsManager sms=SmsManager.getDefault();
-            time[0]="Time to take medicine 1 : "+spinner_T1.getSelectedItem().toString()+"\n Time to take medicine 2 : "+spinner_T2.getSelectedItem().toString()
-                    +" \nTime to make medicine 3 : "+spinner_T3.getSelectedItem().toString()+"\n Time to take medicine 4 : "+spinner_T4.getSelectedItem().toString()
-            ;
-            String ftime2=complete+"\n"+message+"\n"+time[0];
-            ArrayList<String> messages = sms.divideMessage(ftime2);
-            sms.sendMultipartTextMessage(phone,null,messages,null,null);
+            } else if (spinner_T5.getSelectedItem().toString().equals("0")) {
+                SmsManager sms = SmsManager.getDefault();
+                time[0] = "Time to take medicine 1 : " + spinner_T1.getSelectedItem().toString() + "\n Time to take medicine 2 : " + spinner_T2.getSelectedItem().toString()
+                        + " \nTime to make medicine 3 : " + spinner_T3.getSelectedItem().toString() + "\n Time to take medicine 4 : " + spinner_T4.getSelectedItem().toString()
+                ;
+                String ftime2 = complete + "\n" + message + "\n" + time[0];
+                ArrayList<String> messages = sms.divideMessage(ftime2);
+                sms.sendMultipartTextMessage(phone, null, messages, null, null);
             /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
 
-        }else {
-            SmsManager sms=SmsManager.getDefault();
-            time[0]="Time to take medicine 1 : "+spinner_T1.getSelectedItem().toString()+"\n Time to take medicine 2 : "+spinner_T2.getSelectedItem().toString()
-                    +" \n Time to make medicine 3 : "+spinner_T3.getSelectedItem().toString()+"\n Time to take medicine 4 : "+spinner_T4.getSelectedItem().toString()
-                +"\n Time to make medcine 5 : "+spinner_T5.getSelectedItem().toString()
-            ;
-            String ftime2=complete+"\n"+message+"\n"+time[0];
-            ArrayList<String> messages = sms.divideMessage(ftime2);
-            sms.sendMultipartTextMessage(phone,null,messages,null,null);
+            } else {
+                SmsManager sms = SmsManager.getDefault();
+                time[0] = "Time to take medicine 1 : " + spinner_T1.getSelectedItem().toString() + "\n Time to take medicine 2 : " + spinner_T2.getSelectedItem().toString()
+                        + " \n Time to make medicine 3 : " + spinner_T3.getSelectedItem().toString() + "\n Time to take medicine 4 : " + spinner_T4.getSelectedItem().toString()
+                        + "\n Time to make medcine 5 : " + spinner_T5.getSelectedItem().toString()
+                ;
+                String ftime2 = complete + "\n" + message + "\n" + time[0];
+                ArrayList<String> messages = sms.divideMessage(ftime2);
+                sms.sendMultipartTextMessage(phone, null, messages, null, null);
             /*for (String msg : messages) {
 
                 sms.sendTextMessage(phone,null,msg,sentPI,deliveredPI);
             }*/
 
-        }
+            }
 
 
 
@@ -526,12 +541,8 @@ public class medstime extends AppCompatActivity {
                 "\n diagnosis : "+diagnosis; */
 
 
-
-        if(ContextCompat.checkSelfPermission(this,Manifest.permission.SEND_SMS)!=PackageManager.PERMISSION_GRANTED){
-
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
-
         }
+
         /*else {
             String Fcomplete=complete+"\n"+message+"\n"+ time[0];
             SmsManager sms=SmsManager.getDefault();

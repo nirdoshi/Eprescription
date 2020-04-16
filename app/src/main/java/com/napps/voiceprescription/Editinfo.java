@@ -861,87 +861,90 @@ public class Editinfo extends AppCompatActivity {
 
     public void btn_sendsms_OnClick(View v) {
 
-        final String[] message = new String[100];
-        if(et_Emeds2.getText().toString().isEmpty() && et_Emeds3.getText().toString().isEmpty()
-                && et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()){
-
-            message[0]="medicine 1 : "+et_Emeds1.getText().toString()+"\n pills/day of medicine 1 : "+spinner_P1.getSelectedItem().toString()
-                    +"\n duration of medicine 1 is : " +spinner_D1.getSelectedItem().toString()+"\n Time to take medicine 1 is : "+spinner_T1.getSelectedItem()
-                    .toString();
-
-        }else if(et_Emeds3.getText().toString().isEmpty() && et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()){
-            message[0]="medicine 1 : "+et_Emeds1.getText().toString()+"\n pills/day of medicine 1 : "+spinner_P1.getSelectedItem().toString()
-                    +"\n duration of medicine 1 is : " +spinner_D1.getSelectedItem().toString()+"\n Time to take medicine 1 is : "+spinner_T1.getSelectedItem()
-                    .toString()+
-                    "\n medicine 2 : "+et_Emeds2.getText().toString()+"\n pills/day of medicine 2 : "+spinner_P2.getSelectedItem().toString()
-                    +"\n duration of medicine 2 is : " +spinner_D2.getSelectedItem().toString()+"\n Time to take medicine 2 is : "+spinner_T2.getSelectedItem()
-                    .toString();;
-
-
-
-        }else if(et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()){
-
-            message[0]="medicine 1 : "+et_Emeds1.getText().toString()+"\n pills/day of medicine 1 : "+spinner_P1.getSelectedItem().toString()
-                    +"\n duration of medicine 1 is : " +spinner_D1.getSelectedItem().toString()+"\n Time to take medicine 1 is : "+spinner_T1.getSelectedItem()
-                    .toString()+
-                    "\n medicine 2 : "+et_Emeds2.getText().toString()+"\n pills/day of medicine 2 : "+spinner_P2.getSelectedItem().toString()
-                    +"\n duration of medicine 2 is : " +spinner_D2.getSelectedItem().toString()+"\n Time to take medicine 2 is : "+spinner_T2.getSelectedItem()
-                    .toString()+
-                    "\n medicine 3 : "+et_Emeds3.getText().toString()+"\n pills/day of medicine 3 : "+spinner_P3.getSelectedItem().toString()
-                    +"\n duration of medicine 3 is : " +spinner_D3.getSelectedItem().toString()+"\n Time to take medicine 3 is : "+spinner_T3.getSelectedItem()
-                    .toString();
-
-
-        }else if(et_Emeds5.getText().toString().isEmpty()){
-
-            message[0]="medicine 1 : "+et_Emeds1.getText().toString()+"\n pills/day of medicine 1 : "+spinner_P1.getSelectedItem().toString()
-                    +"\n duration of medicine 1 is : " +spinner_D1.getSelectedItem().toString()+"\n Time to take medicine 1 is : "+spinner_T1.getSelectedItem()
-                    .toString()+
-                    "\n medicine 2 : "+et_Emeds2.getText().toString()+"\n pills/day of medicine 2 : "+spinner_P2.getSelectedItem().toString()
-                    +"\n duration of medicine 2 is : " +spinner_D2.getSelectedItem().toString()+"\n Time to take medicine 2 is : "+spinner_T2.getSelectedItem()
-                    .toString()+
-                    "\n medicine 3 : "+et_Emeds3.getText().toString()+"\n pills/day of medicine 3 : "+spinner_P3.getSelectedItem().toString()
-                    +"\n duration of medicine 3 is : " +spinner_D3.getSelectedItem().toString()+"\n Time to take medicine 3 is : "+spinner_T3.getSelectedItem()
-                    .toString()+
-                    "\n medicine 4 : "+et_Emeds4.getText().toString()+"\n pills/day of medicine 4 : "+spinner_P4.getSelectedItem().toString()
-                    +"\n duration of medicine 4 is : " +spinner_D4.getSelectedItem().toString()+"\n Time to take medicine 4 is : "+spinner_T4.getSelectedItem()
-                    .toString();
-
-        }else {
-
-            message[0]="medicine 1 : "+et_Emeds1.getText().toString()+"\n pills/day of medicine 1 : "+spinner_P1.getSelectedItem().toString()
-                    +"\n duration of medicine 1 is : " +spinner_D1.getSelectedItem().toString()+"\n Time to take medicine 1 is : "+spinner_T1.getSelectedItem()
-                    .toString()+
-                    "\n medicine 2 : "+et_Emeds2.getText().toString()+"\n pills/day of medicine 2 : "+spinner_P2.getSelectedItem().toString()
-                    +"\n duration of medicine 2 is : " +spinner_D2.getSelectedItem().toString()+"\n Time to take medicine 2 is : "+spinner_T2.getSelectedItem()
-                    .toString()+
-                    "\n medicine 3 : "+et_Emeds3.getText().toString()+"\n pills/day of medicine 3 : "+spinner_P3.getSelectedItem().toString()
-                    +"\n duration of medicine 3 is : " +spinner_D3.getSelectedItem().toString()+"\n Time to take medicine 3 is : "+spinner_T3.getSelectedItem()
-                    .toString()+
-                    "\n medicine 4 : "+et_Emeds4.getText().toString()+"\n pills/day of medicine 4 : "+spinner_P4.getSelectedItem().toString()
-                    +"\n duration of medicine 4 is : " +spinner_D4.getSelectedItem().toString()+"\n Time to take medicine 4 is : "+spinner_T4.getSelectedItem()
-                    .toString()+
-                    "\n medicine 5 : "+et_Emeds5.getText().toString()+"\n pills/day of medicine 5 : "+spinner_P5.getSelectedItem().toString()
-                    +"\n duration of medicine 5 is : " +spinner_D5.getSelectedItem().toString()+"\n Time to take medicine 5 is : "+spinner_T5.getSelectedItem()
-                    .toString();
-        }
-
-        String complete="your name is :"+et_Ename.getText().toString()+"\n your symtom are : "+et_Esymptoms.getText().toString()
-                +"\n your diagnosis is : "+et_Ediagnosis.getText().toString();
-
-        String fcomplete=complete+"\n"+message[0];
-        SmsManager sms=SmsManager.getDefault();
-        String phone=publicarray.info.get(index1).getPhone();
-        //time[0] =spinner_T1.getSelectedItem().toString();
-        //String ftime="Time to take medicine 1 is :-"+time[0];
-        //String ftime2=complete+"\n"+message+"\n"+ftime;
-        ArrayList<String> messages = sms.divideMessage(fcomplete);
-        sms.sendMultipartTextMessage(phone,null,messages,null,null);
-
-
         if(ContextCompat.checkSelfPermission(Editinfo.this, Manifest.permission.SEND_SMS)!= PackageManager.PERMISSION_GRANTED){
 
             ActivityCompat.requestPermissions(Editinfo.this,new String[]{Manifest.permission.SEND_SMS},MY_PERMISSIONS_REQUEST_SEND_SMS);
+
+        }else {
+
+
+            final String[] message = new String[100];
+            if (et_Emeds2.getText().toString().isEmpty() && et_Emeds3.getText().toString().isEmpty()
+                    && et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()) {
+
+                message[0] = "medicine 1 : " + et_Emeds1.getText().toString() + "\n pills/day of medicine 1 : " + spinner_P1.getSelectedItem().toString()
+                        + "\n duration of medicine 1 is : " + spinner_D1.getSelectedItem().toString() + "\n Time to take medicine 1 is : " + spinner_T1.getSelectedItem()
+                        .toString();
+
+            } else if (et_Emeds3.getText().toString().isEmpty() && et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()) {
+                message[0] = "medicine 1 : " + et_Emeds1.getText().toString() + "\n pills/day of medicine 1 : " + spinner_P1.getSelectedItem().toString()
+                        + "\n duration of medicine 1 is : " + spinner_D1.getSelectedItem().toString() + "\n Time to take medicine 1 is : " + spinner_T1.getSelectedItem()
+                        .toString() +
+                        "\n medicine 2 : " + et_Emeds2.getText().toString() + "\n pills/day of medicine 2 : " + spinner_P2.getSelectedItem().toString()
+                        + "\n duration of medicine 2 is : " + spinner_D2.getSelectedItem().toString() + "\n Time to take medicine 2 is : " + spinner_T2.getSelectedItem()
+                        .toString();
+                ;
+
+
+            } else if (et_Emeds4.getText().toString().isEmpty() && et_Emeds5.getText().toString().isEmpty()) {
+
+                message[0] = "medicine 1 : " + et_Emeds1.getText().toString() + "\n pills/day of medicine 1 : " + spinner_P1.getSelectedItem().toString()
+                        + "\n duration of medicine 1 is : " + spinner_D1.getSelectedItem().toString() + "\n Time to take medicine 1 is : " + spinner_T1.getSelectedItem()
+                        .toString() +
+                        "\n medicine 2 : " + et_Emeds2.getText().toString() + "\n pills/day of medicine 2 : " + spinner_P2.getSelectedItem().toString()
+                        + "\n duration of medicine 2 is : " + spinner_D2.getSelectedItem().toString() + "\n Time to take medicine 2 is : " + spinner_T2.getSelectedItem()
+                        .toString() +
+                        "\n medicine 3 : " + et_Emeds3.getText().toString() + "\n pills/day of medicine 3 : " + spinner_P3.getSelectedItem().toString()
+                        + "\n duration of medicine 3 is : " + spinner_D3.getSelectedItem().toString() + "\n Time to take medicine 3 is : " + spinner_T3.getSelectedItem()
+                        .toString();
+
+
+            } else if (et_Emeds5.getText().toString().isEmpty()) {
+
+                message[0] = "medicine 1 : " + et_Emeds1.getText().toString() + "\n pills/day of medicine 1 : " + spinner_P1.getSelectedItem().toString()
+                        + "\n duration of medicine 1 is : " + spinner_D1.getSelectedItem().toString() + "\n Time to take medicine 1 is : " + spinner_T1.getSelectedItem()
+                        .toString() +
+                        "\n medicine 2 : " + et_Emeds2.getText().toString() + "\n pills/day of medicine 2 : " + spinner_P2.getSelectedItem().toString()
+                        + "\n duration of medicine 2 is : " + spinner_D2.getSelectedItem().toString() + "\n Time to take medicine 2 is : " + spinner_T2.getSelectedItem()
+                        .toString() +
+                        "\n medicine 3 : " + et_Emeds3.getText().toString() + "\n pills/day of medicine 3 : " + spinner_P3.getSelectedItem().toString()
+                        + "\n duration of medicine 3 is : " + spinner_D3.getSelectedItem().toString() + "\n Time to take medicine 3 is : " + spinner_T3.getSelectedItem()
+                        .toString() +
+                        "\n medicine 4 : " + et_Emeds4.getText().toString() + "\n pills/day of medicine 4 : " + spinner_P4.getSelectedItem().toString()
+                        + "\n duration of medicine 4 is : " + spinner_D4.getSelectedItem().toString() + "\n Time to take medicine 4 is : " + spinner_T4.getSelectedItem()
+                        .toString();
+
+            } else {
+
+                message[0] = "medicine 1 : " + et_Emeds1.getText().toString() + "\n pills/day of medicine 1 : " + spinner_P1.getSelectedItem().toString()
+                        + "\n duration of medicine 1 is : " + spinner_D1.getSelectedItem().toString() + "\n Time to take medicine 1 is : " + spinner_T1.getSelectedItem()
+                        .toString() +
+                        "\n medicine 2 : " + et_Emeds2.getText().toString() + "\n pills/day of medicine 2 : " + spinner_P2.getSelectedItem().toString()
+                        + "\n duration of medicine 2 is : " + spinner_D2.getSelectedItem().toString() + "\n Time to take medicine 2 is : " + spinner_T2.getSelectedItem()
+                        .toString() +
+                        "\n medicine 3 : " + et_Emeds3.getText().toString() + "\n pills/day of medicine 3 : " + spinner_P3.getSelectedItem().toString()
+                        + "\n duration of medicine 3 is : " + spinner_D3.getSelectedItem().toString() + "\n Time to take medicine 3 is : " + spinner_T3.getSelectedItem()
+                        .toString() +
+                        "\n medicine 4 : " + et_Emeds4.getText().toString() + "\n pills/day of medicine 4 : " + spinner_P4.getSelectedItem().toString()
+                        + "\n duration of medicine 4 is : " + spinner_D4.getSelectedItem().toString() + "\n Time to take medicine 4 is : " + spinner_T4.getSelectedItem()
+                        .toString() +
+                        "\n medicine 5 : " + et_Emeds5.getText().toString() + "\n pills/day of medicine 5 : " + spinner_P5.getSelectedItem().toString()
+                        + "\n duration of medicine 5 is : " + spinner_D5.getSelectedItem().toString() + "\n Time to take medicine 5 is : " + spinner_T5.getSelectedItem()
+                        .toString();
+            }
+
+            String complete = "your name is :" + et_Ename.getText().toString() + "\n your symtom are : " + et_Esymptoms.getText().toString()
+                    + "\n your diagnosis is : " + et_Ediagnosis.getText().toString();
+
+            String fcomplete = complete + "\n" + message[0];
+            SmsManager sms = SmsManager.getDefault();
+            String phone = publicarray.info.get(index1).getPhone();
+            //time[0] =spinner_T1.getSelectedItem().toString();
+            //String ftime="Time to take medicine 1 is :-"+time[0];
+            //String ftime2=complete+"\n"+message+"\n"+ftime;
+            ArrayList<String> messages = sms.divideMessage(fcomplete);
+            sms.sendMultipartTextMessage(phone, null, messages, null, null);
+
 
         }
 
